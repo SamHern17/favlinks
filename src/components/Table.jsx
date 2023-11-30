@@ -1,36 +1,59 @@
 function TableHeader(){
     /* responsible for rendering the head of our table with the appropriate columns */
     return(
-        <thread>
+        <thead>
             <tr>
                 <th>Name</th>
                 <th>URL</th>
                 <th>Remove</th>
             </tr>
-        </thread>
+        </thead>
 
     )
 
 }
 
-function TableBody(){
+ const TableBody = (props) => {
+    // boilerplate table body functional component
+    // we use Array.map to create table rows from LinkData passed via props
+
+    const rows = props.linkData.map((row, index) => {
+        return (
+            <tr key={index}>
+                <td>{row.name}</td>
+                <td>
+                    <a href={row.URL}>{row.URL}</a>
+                </td>
+                <td>
+                    <button onClick={() => props.removeLink(index)}>Delete</button>
+                </td>
+            </tr>
+        )
+    })
+
+    return <tbody>{rows}</tbody>
+}
+
+//function TableBody(){
     /* responsible for rendering the data for our table */
-    return(
-        <tbody>
-            
-        </tbody>
+    //return(
+    //    <tbody>{rows}</tbody>
 
-    )
+    //)
 
-}
+//}
 
-function Table(){
+function Table(props){
+
+    const handleRemove = (index) => {
+        console.log("button clicked", index)
+    }
 
     return(
         <table>
           <TableHeader/>
-          <TableBody/>
-        </table>
+          <TableBody linkData={props.data} removeLink={handleRemove}/> 
+        </table>   
     )
 
 }
