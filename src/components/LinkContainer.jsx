@@ -8,6 +8,14 @@ function LinkContainer(){
     const [favLinks, setFavLinks] = useState([])
 
     const handleRemove = (index) => {
+        /*
+            TODO - Create logic for setting the state
+            to filter array and remove favLink at index
+            */
+           let newArray = favLinks
+           delete newArray[index]
+           newArray = newArray.filter((_,i) => i !== index)
+           setFavLinks(newArray)
 
     }
 
@@ -19,7 +27,8 @@ function LinkContainer(){
             */
             setFavLinks([...favLinks, favLink])
 
-            // let newArray = favLinks.push(favLink)
+            // let newArray = favLinks
+            // newArray.push(favLink)
             // setFavLinks(newArray)
 
     }
@@ -30,7 +39,7 @@ function LinkContainer(){
             <h1>My Favorite Links</h1>
             <p>Add a new link with a name and URL to the table!</p>
             <Table data={favLinks} 
-            prop2 prop3/>
+            removeLink={handleRemove}/>
             <h1>Add New</h1>
             <Form submitNewLink={handleSubmit}/>
                 

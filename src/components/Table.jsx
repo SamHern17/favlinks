@@ -45,14 +45,14 @@ function TableHeader(){
 
 function Table(props){
 
-    const handleRemove = (index) => {
-        console.log("button clicked", index)
-    }
+    //const handleRemove = (index) => {
+      //  console.log("button clicked", index)
+    //}
 
     return(
         <table>
           <TableHeader/>
-          <TableBody linkData={props.data} removeLink={handleRemove}/> 
+          <TableBody linkData={props.data} removeLink={props.removeLink}/> 
         </table>   
     )
 
